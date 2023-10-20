@@ -2,7 +2,6 @@ import { Livro } from './models/livro';
 import { Component, OnInit } from '@angular/core';
 import { LivroService } from './services/livro.service';
 import { NgForm } from '@angular/forms';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +12,7 @@ export class AppComponent implements OnInit{
   livro = {} as Livro;
   livros: Livro[]=[];
 
-  constructor(private livroService: LivroService,
-              public dialog: MatDialog) {}
+  constructor(private livroService: LivroService) {}
 
   ngOnInit() {
     this.getLivros();
@@ -63,13 +61,5 @@ export class AppComponent implements OnInit{
     this.getLivros();
     form.resetForm();
     this.livro = {} as Livro;
-  }
-
-  onError(errorMsg: string){
-    this.dialog.open(DialogDataExampleDialog),{
-      data: {
-        animal: 'panda'
-      }
-    });
   }
 }
