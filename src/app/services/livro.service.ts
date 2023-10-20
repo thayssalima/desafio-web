@@ -16,6 +16,7 @@ export class LivroService {
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      .append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MTI5MTYyNTAwMyIsImV4cCI6MTY5ODY4NjM4MSwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IkNMSUVOVEUifV19.8NswbkF1AO8UzUVaR4is7oBI0ETLa5SjIAnl4vQdEqRP-L-71g5XvPA0EOSmCkf6BD0xdxzTVDZ2nKnokkzvEQ')
   }
 
   // Obtem todos os livros
@@ -37,7 +38,7 @@ export class LivroService {
 
   // salva um livro
   cadastrar(livros: Livro): Observable<Livro> {
-    return this.httpClient.post<Livro>(this.url, JSON.stringify(livros), this.httpOptions)
+    return this.httpClient.post<Livro>(this.url, JSON.stringify(livros),this.httpOptions)
     .pipe(
       retry(2),
       catchError(this.handleError)

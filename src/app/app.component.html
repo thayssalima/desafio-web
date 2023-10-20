@@ -10,17 +10,17 @@
       <table class="table">
           <thead>
             <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nome</th>
+              <th scope="col">Título</th>
               <th scope="col">Autor</th>
+              <th scope="col">Data de cadastro</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let livro of livros">
-              <td>{{livro.id}}</td>
               <td>{{livro.nome}}</td>
               <td>{{livro.autor}}</td>
+              <td>{{livro.dataCadastro| date : 'dd/MM/yyyy'}}</td>
               <td>
                 <button type="button" class="btn btn-warning btn-sm" (click)="editLivro(livro)">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteLivro(livro)">Deletar</button>

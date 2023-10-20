@@ -48,6 +48,7 @@ export class AppComponent implements OnInit{
   // copia o livro para ser editado.
   editLivro(livro: Livro) {
     this.livro = { ...livro };
+    console.log(this.livro);
   }
 
   // limpa o formulario
