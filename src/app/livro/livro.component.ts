@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Livro } from '../models/livro';
 import { LivroService } from '../services/livro.service';
 import { NgForm } from '@angular/forms';
+import { UsuarioAutenticadoDto } from '../models/usuario-autenticado';
+import { AutenticacaoService } from '../services/autenticacao.service';
 
 @Component({
   selector: 'app-livro',
@@ -12,10 +14,12 @@ export class LivroComponent implements OnInit{
   livro = {} as Livro;
   livros: Livro[]=[];
 
-  constructor(private livroService: LivroService) {}
+  usuario: UsuarioAutenticadoDto | null = null
+  constructor(private livroService: LivroService ,public autenticacaoService: AutenticacaoService) {}
 
   ngOnInit() {
     this.getLivros();
+    this.usuario = this.autenticacaoService.retornarStorage();
   }
 
   // define se um livro será criado ou atualizado

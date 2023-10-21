@@ -15,4 +15,12 @@ export class AutenticacaoService  {
     autenticar(body: any): Observable<UsuarioAutenticadoDto> {
         return this.httpClient.post<UsuarioAutenticadoDto>(this.url + '/autenticar', body);
       }
+
+      salvarStorage(usuario: UsuarioAutenticadoDto) {
+        localStorage.setItem('desafio', JSON.stringify(usuario));
+      }
+
+      retornarStorage(): UsuarioAutenticadoDto {
+        return <UsuarioAutenticadoDto>JSON.parse(<string>localStorage.getItem('desafio'));
+      }
 }

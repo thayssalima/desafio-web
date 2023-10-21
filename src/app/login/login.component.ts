@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   enviar(): void {
-    console.log(this.formulario);
     this.autenticacaoService.autenticar(this.formulario.value).subscribe({
       next: (response) => {
+        this.autenticacaoService.salvarStorage(response);
         this.router.navigateByUrl('livro');
       },
       error: (error) => {
