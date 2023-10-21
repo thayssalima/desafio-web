@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { UsuarioAutenticadoGuard } from './services/guards/usuario-autenticado.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'livro', component: LivroComponent , canActivate: [UsuarioAutenticadoGuard]},
 ];
 
