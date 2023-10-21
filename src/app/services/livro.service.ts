@@ -10,12 +10,11 @@ import { retry, catchError } from 'rxjs/operators';
 export class LivroService {
 
   url = 'http://localhost:8080/desafio-api/livros';
-  
+
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-      .append('Authorization', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0MTI5MTYyNTAwMyIsImV4cCI6MTY5ODY4NjM4MSwiYXV0aG9yaXRpZXMiOlt7ImF1dGhvcml0eSI6IkNMSUVOVEUifV19.8NswbkF1AO8UzUVaR4is7oBI0ETLa5SjIAnl4vQdEqRP-L-71g5XvPA0EOSmCkf6BD0xdxzTVDZ2nKnokkzvEQ')
   }
 
   // Obtem todos os livros
