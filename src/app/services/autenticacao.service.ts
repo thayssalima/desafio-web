@@ -23,4 +23,8 @@ export class AutenticacaoService  {
       retornarStorage(): UsuarioAutenticadoDto {
         return <UsuarioAutenticadoDto>JSON.parse(<string>localStorage.getItem('desafio'));
       }
+
+      get logado(): boolean {
+        return localStorage.getItem('desafio') ? true : false;
+      }
 }
