@@ -9,9 +9,8 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class LivroService {
 
-  url = 'http://localhost:8080/desafio-api/livros'; // api rest fake
-
-  // injetando o HttpClient
+  url = 'http://localhost:8080/desafio-api/livros';
+  
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {

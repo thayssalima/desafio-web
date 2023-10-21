@@ -1,10 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import { AutenticacaoService } from '../services/autenticacao.service';
+import { MensagemService } from '../services/mensagem.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  formulario = this.formBuilder.group({
+    cpf: ['', [Validators.required]],
+    senha: ['', [Validators.required]]
+  })
 
+  constructor(
+    public formBuilder: FormBuilder,
+    public autenticacaoService: AutenticacaoService,
+    public mensagemService: MensagemService,
+    public router: Router
+  ) { }
+
+  ngOnInit(): void {
+  }
+
+  enviar(): void {
+    console.log(this.formulario);
+    this.autenticacaoService.autenticar(this.formulario.value).subscribe({
+      next: (response) => {
+        this.router.navigateByUrl('livro');
+      },
+      error: (error) => {
+        this.mensagemService.error(error);
+      }
+    });
+  }
 }
