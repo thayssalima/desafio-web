@@ -40,4 +40,8 @@ export class LoginComponent implements OnInit {
   cadastroCliente(): void{
     this.router.navigateByUrl('cadastro');
   }
+
+  recuperandoSenha(): void{
+    this.router.navigateByUrl('senha');
+  }
 }
