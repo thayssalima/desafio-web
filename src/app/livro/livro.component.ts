@@ -23,7 +23,6 @@ export class LivroComponent implements OnInit{
     this.usuario = this.autenticacaoService.retornarStorage();
   }
 
-  // define se um livro será criado ou atualizado
   saveLivro(form: NgForm) {
     if (this.livro.id !== undefined) {
       this.livroService.editar(this.livro).subscribe({

@@ -9,12 +9,14 @@ import { LivroComponent } from './livro/livro.component';
 import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LivroComponent,
-    LoginComponent
+    LoginComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
