@@ -17,7 +17,7 @@ export class MensagemService {
 
   error(error: MensagemErroDTO) {
     let mensagem = 'Sistema temporariamente indisponivel'
-    if (error.error.message != null) {
+    if (error.error != null) {
       mensagem = error.error.message;
     }
     if (error.error.exception == "SESSAO") {

@@ -30,9 +30,6 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         this.autenticacaoService.salvarStorage(response);
         this.router.navigateByUrl('livro');
-      },
-      error: (error) => {
-        this.mensagemService.error(error);
       }
     });
   }

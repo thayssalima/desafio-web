@@ -64,12 +64,12 @@ export class LivroService {
     // Manipulação de erros
     handleError(error: HttpErrorResponse) {
       let errorMessage = '';
-      if (error.error instanceof ErrorEvent) {
+      if (error.error != null) {
         errorMessage = error.error.message;
       } else {
         errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
       }
-      console.log(errorMessage);
+      alert(errorMessage);
       return throwError(errorMessage);
     };
 }

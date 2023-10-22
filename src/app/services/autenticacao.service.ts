@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import {Observable} from "rxjs";
+import {Observable, catchError, retry, throwError} from "rxjs";
 import { UsuarioAutenticadoDto } from "../models/usuario-autenticado";
 
 @Injectable({
@@ -13,7 +13,11 @@ export class AutenticacaoService  {
     constructor(private httpClient: HttpClient) { }
 
     autenticar(body: any): Observable<UsuarioAutenticadoDto> {
-        return this.httpClient.post<UsuarioAutenticadoDto>(this.url + '/autenticar', body);
+        return this.httpClient.post<UsuarioAutenticadoDto>(this.url + '/autenticar', body)
+        .pipe(
+          retry(1),
+          catchError(this.handleError)
+        );
       }
 
       salvarStorage(usuario: UsuarioAutenticadoDto) {
@@ -27,4 +31,16 @@ export class AutenticacaoService  {
       get logado(): boolean {
         return localStorage.getItem('desafio') ? true : false;
       }
+
+
+    handleError(error: HttpErrorResponse) {
+      let errorMessage = '';
+      if (error.error != null) {
+        errorMessage = error.error.message;
+      } else {
+        errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+      }
+      alert(errorMessage);
+      return throwError(errorMessage);
+    };
 }
