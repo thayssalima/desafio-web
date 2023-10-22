@@ -31,5 +31,6 @@ export class SenhaComponent implements OnInit{
   cleanForm(form: NgForm) {
     form.resetForm();
     this.esqueceuSenha = {} as EsqueceuSenha;
+    this.router.navigateByUrl('');
   }
 }

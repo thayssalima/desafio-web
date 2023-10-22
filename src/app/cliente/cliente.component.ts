@@ -30,6 +30,7 @@ export class ClienteComponent implements OnInit{
   cleanForm(form: NgForm) {
     form.resetForm();
     this.cliente = {} as Cliente;
+    this.router.navigateByUrl('');
   }
 }
 
