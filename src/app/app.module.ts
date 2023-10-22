@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { TokenInterceptor } from './services/interceptors/token.interceptor';
 import { ClienteComponent } from './cliente/cliente.component';
+import { SenhaComponent } from './senha/senha.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LivroComponent,
     LoginComponent,
-    ClienteComponent
+    ClienteComponent,
+    SenhaComponent
   ],
   imports: [
     BrowserModule,

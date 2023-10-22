@@ -3,7 +3,6 @@ import { Cliente } from '../models/cliente';
 import { ClienteService } from '../services/cliente.service';
 import {Router} from "@angular/router";
 import { NgForm } from '@angular/forms';
-import { Alert } from '../models/alerta-dto';
 
 
 @Component({

@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders,HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { EsqueceuSenha } from '../models/esqueceu-senha';
 
 
 @Injectable({
@@ -26,6 +27,14 @@ export class ClienteService {
     )
   }
 
+  recuperandoSenha(esqueceuSenha: EsqueceuSenha): Observable<EsqueceuSenha> {
+    return this.httpClient.put<EsqueceuSenha>(this.url, JSON.stringify(esqueceuSenha),this.httpOptions)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    )
+  }
+
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -37,4 +46,5 @@ export class ClienteService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+
 }
