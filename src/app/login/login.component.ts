@@ -36,4 +36,8 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  cadastroCliente(): void{
+    this.router.navigateByUrl('cadastro');
+  }
 }
